@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ShowDetails = () => {
@@ -33,9 +33,10 @@ const ShowDetails = () => {
     };
 
     const handleBookTicket = () => {
-        const { name: movieName, summary: movieDetails } = show;
+        const { name: movieName, language: movieLanguage, summary: movieDetails } = show;
         setFormData({
             movieName,
+            movieLanguage,
             movieDetails,
         });
         setShowModal(true);
@@ -56,8 +57,8 @@ const ShowDetails = () => {
     }
 
     return (
-        <div>
-            <h1>{show.name}</h1>
+        <div className='m-2'>
+            <h1 className='font-semibold text-xl'>{show.name}</h1>
             <div className="p-4 border border-gray-300 rounded-lg">
                 <p dangerouslySetInnerHTML={{ __html: show.summary }}></p>
                 <button
